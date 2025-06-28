@@ -32,9 +32,9 @@ const main = async () => {
   try {
     console.log('Fetching lists...');
     const lists = await getLists();
-    const target = lists.find(l => l.name && l.name.startsWith('xxx'));
+    const target = lists.find(l => l.name && l.name.startsWith('[test]'));
     if (!target) {
-      console.log('No list found with name starting by "xxx".');
+      console.log('No list found with name starting by "[test]".');
       return;
     }
     console.log(`Attempting to delete: ${target.name} (ID: ${target.id})`);
