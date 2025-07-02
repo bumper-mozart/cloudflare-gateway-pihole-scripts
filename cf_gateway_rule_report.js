@@ -7,14 +7,13 @@ const { result: rules } = await getZeroTrustRules();
 (async () => {
   if (!rules.length) {
     console.warn(
-      "No rule(s) found."
+      "No rule found."
     );
     return;
   }
 
   for (const rule of rules) {
-    console.log(`Deleting rule ${cgpsRule.name}...`);
-    await deleteZeroTrustRule(cgpsRule.id);
+    console.log(`${rule.name}:`, rule);
   }
 })();
 
