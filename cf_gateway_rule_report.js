@@ -1,4 +1,5 @@
 import { getZeroTrustRules } from "./lib/api.js";
+import { getZeroTrustLists } from "./lib/api.js";
 import { notifyWebhook } from "./lib/utils.js";
 
 const { result: rules } = await getZeroTrustRules();
