@@ -1,6 +1,8 @@
 // cf_test_manual_delete.js
 const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+//Find rule starts with following string
+const RULE_NAME = process.env.CLOUDFLARE_RULE_NAME;
 
 if (!ACCOUNT_ID || !API_TOKEN) {
   console.error('Missing CLOUDFLARE_ACCOUNT_ID or CLOUDFLARE_API_TOKEN env variables.');
@@ -32,9 +34,9 @@ const main = async () => {
   try {
     console.log('Fetching lists...');
     const lists = await getLists();
-    const target = lists.find(l => l.name && l.name.startsWith('[test]'));
+    const target = lists.find(l => l.name && l.name.startsWith(RULE_NAME));
     if (!target) {
-      console.log('No list found with name starting by "[test]".');
+      console.log('No list found with name starting by ' + RULE_NAME);
       return;
     }
     console.log(`Attempting to delete: ${target.name} (ID: ${target.id})`);
